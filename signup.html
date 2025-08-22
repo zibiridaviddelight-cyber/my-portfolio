@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Client Login - Defiahnt</title>
+    <title>Create Account - Defiahnt</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,39 +13,36 @@
 </head>
 <body class="antialiased bg-gray-900">
 
-    <div class="min-h-screen flex flex-col items-center justify-center px-4">
+    <div class="min-h-screen flex flex-col items-center justify-center px-4 py-12">
         <!-- Logo -->
         <a href="index.html" class="logo-container text-5xl font-black tracking-tighter text-white mb-8">
             Def<span class="logo-slash">/</span>ahnt
         </a>
 
         <div class="w-full max-w-md bg-gray-800 rounded-2xl shadow-2xl p-8">
-            <h2 class="text-3xl font-bold text-center text-white mb-2">Client Portal</h2>
-            <p class="text-center text-gray-400 mb-8">Welcome back. Please log in to your account.</p>
+            <h2 class="text-3xl font-bold text-center text-white mb-2">Create an Account</h2>
+            <p class="text-center text-gray-400 mb-8">Get started with your client portal.</p>
 
             <form action="portal.html" method="GET" class="space-y-6">
+                <div>
+                    <label for="fullname" class="text-sm font-medium text-gray-300">Full Name</label>
+                    <input type="text" name="fullname" id="fullname" required class="mt-2 w-full bg-gray-700 border-gray-600 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-indigo-500 focus:outline-none" placeholder="e.g., Jane Doe">
+                </div>
                 <div>
                     <label for="email" class="text-sm font-medium text-gray-300">Email Address</label>
                     <input type="email" name="email" id="email" required class="mt-2 w-full bg-gray-700 border-gray-600 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-indigo-500 focus:outline-none" placeholder="you@example.com">
                 </div>
                 <div>
-                    <div class="flex justify-between items-center">
-                        <label for="password" class="text-sm font-medium text-gray-300">Password</label>
-                        <a href="#" class="text-sm text-indigo-400 hover:text-indigo-300">Forgot password?</a>
-                    </div>
+                    <label for="password" class="text-sm font-medium text-gray-300">Password</label>
                     <input type="password" name="password" id="password" required class="mt-2 w-full bg-gray-700 border-gray-600 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-indigo-500 focus:outline-none" placeholder="••••••••">
                 </div>
                 <div>
-                    <button type="submit" class="w-full btn">Sign In</button>
+                    <button type="submit" class="w-full btn">Create Account</button>
                 </div>
             </form>
-
-            <p class="text-center text-gray-500 mt-6 text-sm">
-                Don't have an account? <a href="signup.html" class="font-semibold text-indigo-400 hover:text-indigo-300">Sign Up</a>
-            </p>
         </div>
         <p class="text-center text-gray-500 mt-8">
-            <a href="index.html" class="hover:text-gray-400">&larr; Back to Main Site</a>
+            Already have an account? <a href="login.html" class="font-semibold text-indigo-400 hover:text-indigo-300">Sign In</a>
         </p>
     </div>
 
