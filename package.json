@@ -2,6 +2,7 @@
   "name": "defiahnt-portfolio",
   "version": "1.0.0",
   "dependencies": {
-    "postgres": "^3.4.4"
+    "postgres": "^3.4.4",
+    "bcryptjs": "^2.4.3" 
   }
 }

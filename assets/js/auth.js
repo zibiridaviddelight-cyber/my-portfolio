@@ -1,37 +1,74 @@
-// assets/js/auth.js
-
 document.addEventListener('DOMContentLoaded', () => {
-    const loginForm = document.querySelector('form[action="portal.html"]');
-    const signupForm = document.querySelector('form[action="portal.html"]'); // Assuming signup also goes to portal for now
+    const loginForm = document.getElementById('login-form');
+    const signupForm = document.getElementById('signup-form');
+    const errorMessageDiv = document.getElementById('error-message');
+
+    const displayError = (message) => {
+        if (errorMessageDiv) {
+            errorMessageDiv.textContent = message;
+            errorMessageDiv.classList.remove('hidden');
+        }
+    };
 
     if (loginForm) {
-        loginForm.addEventListener('submit', (e) => {
-            // In a real app, you would verify credentials with a server here.
-            // For now, we'll just get the email to personalize the dashboard.
-            const email = document.getElementById('email').value;
-            
-            // We'll extract a name from the email (e.g., "john.doe@email.com" -> "John.doe")
-            const name = email.split('@')[0];
-            const capitalizedName = name.charAt(0).toUpperCase() + name.slice(1);
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if(errorMessageDiv) errorMessageDiv.classList.add('hidden');
 
-            // Store the name in localStorage to be used on the portal page
-            localStorage.setItem('clientName', capitalizedName);
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('/.netlify/functions/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password }),
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || 'Login failed.');
+                }
+
+                // Store user's name and redirect to portal
+                localStorage.setItem('clientName', data.fullName);
+                window.location.href = 'portal.html';
+
+            } catch (error) {
+                displayError(error.message);
+            }
         });
     }
 
     if (signupForm) {
-        signupForm.addEventListener('submit', (e) => {
-            const fullName = document.getElementById('fullname').value;
+        signupForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if(errorMessageDiv) errorMessageDiv.classList.add('hidden');
 
-            if (fullName) {
-                 // If the full name is provided on signup, use that
-                 localStorage.setItem('clientName', fullName);
-            } else {
-                // Fallback for login form
-                const email = document.getElementById('email').value;
-                const name = email.split('@')[0];
-                const capitalizedName = name.charAt(0).toUpperCase() + name.slice(1);
-                localStorage.setItem('clientName', capitalizedName);
+            const fullname = document.getElementById('fullname').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('/.netlify/functions/signup', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ fullname, email, password }),
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || 'Signup failed.');
+                }
+                
+                // On successful signup, store name and redirect
+                localStorage.setItem('clientName', fullname);
+                window.location.href = 'portal.html';
+
+            } catch (error) {
+                displayError(error.message);
             }
         });
     }
