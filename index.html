@@ -52,7 +52,6 @@
     </header>
 
     <main>
-        <!-- All your <section> tags go here, exactly as they were -->
         <!-- Hero Section -->
         <section id="home" class="hero-bg min-h-screen flex items-center pt-20">
             <div class="container mx-auto px-6 text-center" data-aos="fade-up">
@@ -226,8 +225,34 @@
     </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- Your Custom JS -->
-    <script src="assets/js/main.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+    </script>
 
 </body>
 </html>
