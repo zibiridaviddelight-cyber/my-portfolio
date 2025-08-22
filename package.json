@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "postgres": "^3.4.4",
-    "bcryptjs": "^2.4.3" 
+    "bcryptjs": "^2.4.3",
+    "@sendgrid/mail": "^8.1.3"
   }
 }
