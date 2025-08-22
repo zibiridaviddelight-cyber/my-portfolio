@@ -28,6 +28,7 @@
                 <a href="#portfolio" class="nav-link">Portfolio</a>
                 <a href="#process" class="nav-link">Process</a>
                 <a href="#resources" class="nav-link">Resources</a>
+                <a href="#blog" class="nav-link">Blog</a>
                 <a href="#team" class="nav-link">Team</a>
                 <a href="#contact" class="nav-link">Contact</a>
                 <a href="#" class="text-indigo-400 font-bold hover:text-indigo-300">Client Login</a>
@@ -45,6 +46,7 @@
             <a href="#portfolio" class="block py-2 px-6 text-gray-300 hover:bg-gray-800">Portfolio</a>
             <a href="#process" class="block py-2 px-6 text-gray-300 hover:bg-gray-800">Process</a>
             <a href="#resources" class="block py-2 px-6 text-gray-300 hover:bg-gray-800">Resources</a>
+            <a href="#blog" class="block py-2 px-6 text-gray-300 hover:bg-gray-800">Blog</a>
             <a href="#team" class="block py-2 px-6 text-gray-300 hover:bg-gray-800">Team</a>
             <a href="#contact" class="block py-2 px-6 text-gray-300 hover:bg-gray-800">Contact</a>
             <a href="#" class="block py-2 px-6 text-indigo-400 font-bold hover:bg-gray-800">Client Login</a>
@@ -166,6 +168,19 @@
             </div>
         </section>
 
+        <!-- Blog Section -->
+        <section id="blog" class="py-20 bg-gray-900">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="section-title">Insights & News</h2>
+                    <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">Stay updated with our latest thoughts on technology and design.</p>
+                </div>
+                <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Blog posts will be loaded here dynamically -->
+                </div>
+            </div>
+        </section>
+
         <!-- Team Section -->
         <section id="team" class="py-20">
             <div class="container mx-auto px-6">
@@ -225,34 +240,8 @@
     </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 800,
-            once: true,
-        });
-
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Smooth scrolling for nav links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-                if (!mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
-                }
-            });
-        });
-
-    </script>
+    <!-- Your Custom JS -->
+    <script src="assets/js/main.js"></script>
 
 </body>
 </html>
