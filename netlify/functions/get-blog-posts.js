@@ -3,17 +3,16 @@
 const postgres = require('postgres');
 
 exports.handler = async function(event, context) {
-  // Connect to the database using the environment variable
   const sql = postgres(process.env.DATABASE_URL, {
     ssl: {
-      rejectUnauthorized: false, // Required for Neon connections
+      rejectUnauthorized: false,
     },
   });
 
   try {
-    // Fetch the latest 3 blog posts
+    // Fetch all fields, including the new 'content' field
     const posts = await sql`
-      SELECT id, title, excerpt, image_url, slug 
+      SELECT id, title, excerpt, image_url, slug, content 
       FROM blog_posts 
       ORDER BY created_at DESC 
       LIMIT 3

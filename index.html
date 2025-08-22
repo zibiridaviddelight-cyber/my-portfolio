@@ -239,6 +239,23 @@
         </button>
     </div>
 
+    <!-- Blog Post Modal -->
+    <div id="blog-modal-overlay" class="fixed inset-0 bg-black bg-opacity-70 z-50 hidden"></div>
+    <div id="blog-modal" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-800 w-11/12 md:w-3/4 lg:w-1/2 max-h-[80vh] rounded-2xl shadow-2xl z-50 hidden overflow-y-auto">
+        <div class="p-8">
+            <div class="flex justify-between items-center mb-4">
+                <h2 id="modal-title" class="text-3xl font-bold text-white"></h2>
+                <button id="modal-close-btn" class="text-gray-400 hover:text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <img id="modal-image" src="" alt="Blog post image" class="w-full h-64 object-cover rounded-lg mb-6">
+            <div id="modal-content" class="text-gray-300 leading-relaxed prose prose-invert max-w-none"></div>
+        </div>
+    </div>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <!-- Your Custom JS -->
     <script src="assets/js/main.js"></script>
